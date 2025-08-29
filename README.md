@@ -1,1 +1,1 @@
-# PatitentManagement
+# Patitent Management

@@ -19,13 +19,14 @@ public class AuthController {
         this.authService = authService;
     }
 
-    @Operation(summary = "Generation token on user login")
+    @Operation(summary = "Generate token on user login")
     @PostMapping("/login")
-    public ResponseEntity<LoginResponseDTO> login(@RequestBody LoginRequestDTO loginRequestDTO) {
+    public ResponseEntity<LoginResponseDTO> login(
+            @RequestBody LoginRequestDTO loginRequestDTO) {
 
         Optional<String> tokenOptional = authService.authenticate(loginRequestDTO);
 
-        if(tokenOptional.isEmpty()) {
+        if (tokenOptional.isEmpty()) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
 
@@ -35,8 +36,10 @@ public class AuthController {
 
     @Operation(summary = "Validate Token")
     @GetMapping("/validate")
-    public ResponseEntity<Void> validateToken(@RequestParam("Authorization") String authHeader) {
+    public ResponseEntity<Void> validateToken(
+            @RequestHeader("Authorization") String authHeader) {
 
+        // Authorization: Bearer <token>
         if(authHeader == null || !authHeader.startsWith("Bearer ")) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }

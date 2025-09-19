@@ -23,7 +23,7 @@ The system manages patients, billing, authentication, and analytics with scalabl
 - **Backend**: Java, Spring Boot, Spring Security, Spring Data JPA, gRPC, Kafka  
 - **Database**: PostgreSQL  
 - **DevOps**: Docker, Docker Compose
-- **Others**: OpenAPI/Swagger, API Gateway  
+- **Others**: Swagger, API Gateway  
 
 ## 📂 Services
 - `patient-service`: Manage patients, integrates with billing & analytics.
@@ -78,5 +78,6 @@ The **Patient Management System** is designed with a microservices architecture,
 ### 8. Database (PostgreSQL)
 - Stores persistent patient data and related entities.  
 - Only **Patient Service** communicates directly with the database (service owns its data).  
+
 
 
